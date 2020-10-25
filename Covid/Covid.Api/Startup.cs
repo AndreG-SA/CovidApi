@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Covid.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Covid.Api
@@ -23,16 +17,19 @@ namespace Covid.Api
 
         public IConfiguration Configuration { get; }
 
+        public void LoadConfiguration<TConfiguration>(IServiceCollection services) where TConfiguration : class, new()
+        {
+            TConfiguration configuration = new TConfiguration();
+            Configuration.Bind(typeof(TConfiguration).Name, configuration);
+            services.AddSingleton(configuration);
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            LoadConfiguration<RapidApiConfiguration>(services);
             services.AddControllers();
-            
-
-            
             ConfigureSwagger(services);
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +48,6 @@ namespace Covid.Api
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute()
                 endpoints.MapControllers();
             });
 
@@ -69,8 +65,7 @@ namespace Covid.Api
                 {
                     Version = "v1",
                     Title = "Covid Response API",
-                    Description = "Covid Response API"//,
-                    //Contact = new OpenApiContact() { Name = "Development team", Email = "info@psg.co.za", Url = new Uri("https://www.psg.co.za") }
+                    Description = "Covid Response API"
                 });
             });
         }
