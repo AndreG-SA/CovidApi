@@ -17,9 +17,9 @@ namespace Covid.Infrastructure
         {
             _securedServiceClient = securedServiceClient;
         }
-        public async Task<List<StatisticResponse>> GetStatisticsAsync()
+        public async Task<List<StatisticsResponse>> GetStatisticsAsync()
         {
-            var result = await _securedServiceClient.GetAsync<ResponseWrapper<List<StatisticResponse>>>(_statisticsRoute);
+            var result = await _securedServiceClient.GetAsync<ResponseWrapper<List<StatisticsResponse>>>(_statisticsRoute);
             return result.Response;
         }
     }

@@ -10,6 +10,6 @@ namespace Covid.Infrastructure
     /// </summary>
     public interface IDataInfrastructureService
     {
-        Task<List<StatisticResponse>> GetStatisticsAsync();
+        Task<List<StatisticsResponse>> GetStatisticsAsync();
     }
 }

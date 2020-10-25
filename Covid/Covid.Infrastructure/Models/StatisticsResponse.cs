@@ -3,7 +3,7 @@ using System;
 
 namespace Covid.Infrastructure.Models
 {
-    public class StatisticResponse
+    public class StatisticsResponse
     {
         [JsonProperty(propertyName: "continent")]
         public string Continent { get; set; }
