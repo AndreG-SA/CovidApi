@@ -1,4 +1,5 @@
 using Covid.Configuration;
+using Covid.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,8 +29,15 @@ namespace Covid.Api
         public void ConfigureServices(IServiceCollection services)
         {
             LoadConfiguration<RapidApiConfiguration>(services);
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+
+            services.AddSingleton<ISecuredServiceClient, RapidServiceClient>();
+            services.AddTransient<IDataInfrastructureService, DataInfrastructureService>();
+
+
             ConfigureSwagger(services);
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
