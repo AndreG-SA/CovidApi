@@ -1,4 +1,4 @@
-﻿using Covid;
+﻿using Covid.Infrastructure.Exceptions;
 
 namespace System.Net.Http
 {

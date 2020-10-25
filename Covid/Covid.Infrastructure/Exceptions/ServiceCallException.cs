@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Covid
+namespace Covid.Infrastructure.Exceptions
 {
     public class ServiceCallException : InvalidOperationException
     {

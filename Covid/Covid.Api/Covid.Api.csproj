@@ -10,7 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Covid\Covid.csproj" />
+    <ProjectReference Include="..\Covid.Domain\Covid.Domain.csproj" />
+    <ProjectReference Include="..\Covid.Infrastructure\Covid.Infrastructure.csproj" />
   </ItemGroup>
 
 

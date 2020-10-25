@@ -1,4 +1,4 @@
-﻿using Covid.Configuration;
+﻿using Covid.Domain.Configuration;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;

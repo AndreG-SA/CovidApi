@@ -1,4 +1,4 @@
-using Covid.Configuration;
+using Covid.Domain.Configuration;
 using Covid.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

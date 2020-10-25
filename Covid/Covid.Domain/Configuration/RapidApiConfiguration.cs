@@ -1,4 +1,4 @@
-﻿namespace Covid.Configuration
+﻿namespace Covid.Domain.Configuration
 {
     public class RapidApiConfiguration
     {
