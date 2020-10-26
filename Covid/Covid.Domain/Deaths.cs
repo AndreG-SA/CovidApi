@@ -1,10 +1,19 @@
 ﻿
 namespace Covid.Domain
 {
+    /// <summary>
+    /// Deaths domain model
+    /// </summary>
     public class Deaths
     {
-        public int New { get; set; }
+        public string New { get; }
 
-        public int Total { get; set; }
+        public int Total { get; }
+
+        public Deaths(string @new, int total)
+        {
+            New   = @new;
+            Total = total;
+        }
     }
 }

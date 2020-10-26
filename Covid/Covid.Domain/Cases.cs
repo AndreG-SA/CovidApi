@@ -1,17 +1,29 @@
 ﻿
 namespace Covid.Domain
 {
+    /// <summary>
+    /// Cases domain model
+    /// </summary>
     public class Cases
     {
-        public int New { get; set; }
+        public string New { get; }
         
-        public int Active { get; set; }
+        public int Active { get; }
         
-        public int Critical { get; set; }
+        public int Critical { get; }
         
-        public int Recovered { get; set; }
+        public int Recovered { get; }
         
-        public int Total { get; set; }
+        public int Total { get; }
+
+        public Cases(string @new, int active, int critical, int recovered, int total)
+        {
+            New       = @new;
+            Active    = active;
+            Critical  = critical;
+            Recovered = recovered;
+            Total     = total;
+        }
     }
 
 }
