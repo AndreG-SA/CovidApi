@@ -28,7 +28,7 @@ namespace Covid.Api.Services
             var dateToQuery = DateTime.Now;
             var countries   = await _dataInfrastructureService.GetCountriesAsync().ConfigureAwait(false);
             countries       = countries.Select(s => s.CleanCountryNames()).Distinct().ToList();
-            var semaphore   = new Semaphore(1, 1);
+            var semaphore   = new SemaphoreSlim(1, 1);
 
             await countries.ForEachAsync(20, async country =>
             {
@@ -38,7 +38,7 @@ namespace Covid.Api.Services
                     var countryStatistics = countryStatisitics.OrderBy(o => o.Time).FirstOrDefault();
                     if (countryStatistics != null)
                     {
-                        semaphore.WaitOne(); //Synchronise access to the List, I am not sure if List.Add is thread safe 
+                        await semaphore.WaitAsync().ConfigureAwait(false); //Synchronise access to the List, I am not sure if List.Add is thread safe 
                         returnValue.Add(countryStatistics);
                         semaphore.Release();
                     }
