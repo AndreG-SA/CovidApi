@@ -1,4 +1,5 @@
-﻿using Covid.Infrastructure.Models;
+﻿using Covid.Domain;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace Covid.Infrastructure
     /// </summary>
     public interface IDataInfrastructureService
     {
-        Task<List<StatisticsResponse>> GetStatisticsAsync();
+        Task<List<Statistics>> GetStatisticsForCountryAsync(string country, DateTime day);
+        Task<List<string>> GetCountriesAsync();
     }
 }

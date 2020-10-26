@@ -1,3 +1,5 @@
+using Covid.Api.Mappers;
+using Covid.Api.Services;
 using Covid.Domain.Configuration;
 using Covid.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -33,11 +35,11 @@ namespace Covid.Api
 
             services.AddSingleton<ISecuredServiceClient, RapidServiceClient>();
             services.AddTransient<IDataInfrastructureService, DataInfrastructureService>();
-
+            services.AddTransient<IContinentCalculationService, ContinentCalculationService>();
+            services.AddTransient<ICountryCalculationService, CountryCalculationService>();
+            services.AddTransient<IConsolidatedDataService, ConsolidatedDataService>();
 
             ConfigureSwagger(services);
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

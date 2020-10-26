@@ -7,6 +7,8 @@ namespace Covid.Domain
     /// </summary>
     public class Statistics
     {
+        private const string _AllContinentsIdentifier = "All";
+
         public string Continent { get; }
 
         public string Country { get; }
@@ -32,6 +34,22 @@ namespace Covid.Domain
             Day        = day;
             Time       = time;
         }
-    }
 
+        //public bool IsContinent()
+        //{
+        //    return string.IsNullOrWhiteSpace(Continent) == false &&
+        //           string.IsNullOrWhiteSpace(Country) == false &&
+        //           Continent == Country &&
+        //           Continent != _AllContinentsIdentifier;
+        //}
+
+        public bool IsCountry()
+        {
+            return string.IsNullOrWhiteSpace(Continent) == false &&
+                   string.IsNullOrWhiteSpace(Country) == false &&
+                   Continent != Country &&
+                   Continent != _AllContinentsIdentifier;
+        }
+
+    }
 }

@@ -8,10 +8,10 @@ namespace Covid.Infrastructure.Models
         public string Get { get; set; }
 
         [JsonProperty(propertyName: "parameters")]
-        public string[] Parameters { get; set; }
+        public object Parameters { get; set; }
 
         [JsonProperty(propertyName: "errors")]
-        public string[] Errors { get; set; }
+        public object Errors { get; set; }
 
         [JsonProperty(propertyName: "results")]
         public int Results { get; set; }

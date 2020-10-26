@@ -27,20 +27,18 @@ namespace Covid.Infrastructure
         {
             var uri = $"{_rapidApiConfiguration.BaseUrlRoute}/{route}";
             var response = await _httpClient.GetAsync(uri).ConfigureAwait(false);
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
                 throw response.ToException();
             }
 
             var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            if(string.IsNullOrWhiteSpace(responseContent))
+            if (string.IsNullOrWhiteSpace(responseContent))
             {
                 return null;
             }
 
             return JsonConvert.DeserializeObject<TResponse>(responseContent);
-
         }
-        
     }
 }
